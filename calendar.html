@@ -74,7 +74,7 @@
 
         request.execute(function(resp) {
           var events = resp.items;
-          appendPre('Upcoming events:');
+          appendPre('Event Date,Start Time,End Time,Event Title,Event Description,Contact,Contact Email,Contact Phone,Location,Category');
 
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
@@ -83,12 +83,16 @@
               var color = event.colorId;
               var eventDate = event.start.date;
               var eventDateFormatted = new Date(eventDate).toLocaleDateString();
+              
+              var brierPurple = 8;
+              var brierYellow = 13;
+              var brierColor = color == '3' ? brierPurple : brierYellow;
 
-              var line = `${eventDateFormatted},8:45AM,3:45PM,${summary},Watch D.O.G.S. Day,Watch D.O.G.S. Contact,brierwatchdog@gmail.com,425-431-7854 (Press 9),Brier Elementary),${color}`;
+              var line = `${eventDateFormatted},8:45AM,3:45PM,${summary},Watch D.O.G.S. Day,Watch D.O.G.S. Contact,brierwatchdog@gmail.com,425-431-7854 (Press 9),Brier Elementary),${brierColor}`;
               appendPre(line)
             }
           } else {
-            appendPre('No upcoming events found.');
+            appendPre('No events found.');
           }
 
         });
