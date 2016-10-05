@@ -82,7 +82,7 @@
               var summary = event.summary;
               var color = event.colorId;
               var eventDate = event.start.date;
-              var eventDateFormatted = eventDate.toLocaleDateString();
+              var eventDateFormatted = new Date(eventDate).toLocaleDateString();
 
               var line = "{eventDateFormatted},8:45AM,3:45PM,{summary},Watch D.O.G.S. Day,Watch D.O.G.S. Contact,brierwatchdog@gmail.com,425-431-7854 (Press 9),Brier Elementary),{color}";
               appendPre(line)
