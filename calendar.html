@@ -64,9 +64,10 @@
        */
       function listUpcomingEvents() {
         var startDate = getValue('startDatePicker').value;
+        var minimumDate = (new Date(startDate)).toISOString();
         var request = gapi.client.calendar.events.list({
           'calendarId': calendarId,
-          'timeMin': (new Date(startDate)).toISOString(),
+          'timeMin': minimumDate,
           'showDeleted': false,
           'singleEvents': true,
           'maxResults': 1000,
