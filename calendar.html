@@ -63,9 +63,10 @@
        * appropriate message is printed.
        */
       function listUpcomingEvents() {
+        var startDate = getValue('startDatePicker');
         var request = gapi.client.calendar.events.list({
           'calendarId': calendarId,
-          'timeMin': (new Date('1-1-2016')).toISOString(),
+          'timeMin': (new Date(startDate)).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
           'maxResults': 1000,
@@ -110,16 +111,23 @@
         pre.appendChild(textContent);
       }
 
+      function getValue(elementId){
+         var value = document.getElementById(elementId);
+         return value;
+      }
+
     </script>
     <script src="https://apis.google.com/js/client.js">
     </script>
   </head>
   <body>
     <div id="authorize-div">
-      <span>Authorize access to Google Calendar API</span>
+      <span>Obtain Google Calendar Events</span>
+      <input type="date" id="startDatePicker"/>
+      
       <!--Button for the user to click to initiate auth sequence -->
       <button id="authorize-button" onclick="handleAuthClick(event)">
-        Authorize
+        Retrieve
       </button>
     </div>
     <pre id="output"></pre>
