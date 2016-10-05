@@ -63,7 +63,7 @@
        * appropriate message is printed.
        */
       function listUpcomingEvents() {
-        var startDate = getValue('startDatePicker');
+        var startDate = getValue('startDatePicker').value;
         var request = gapi.client.calendar.events.list({
           'calendarId': calendarId,
           'timeMin': (new Date(startDate)).toISOString(),
